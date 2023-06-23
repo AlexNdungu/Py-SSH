@@ -7,14 +7,14 @@ ssh_client = paramiko.SSHClient()
 #Get credentials
 hostname = input("Hostname: ")
 username = input("Username: ")
-password = getpass.getpass(prompt = 'Password :')
+password = getpass.getpass(prompt = 'Enter the password')
 
 
 #Add to known
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-ssh_client.connect(hostname='192.168.100.9', username='user', password='joyce2001')
-stdin, stdout, stderr = ssh_client.exec_command('free -m')
+ssh_client.connect(hostname=hostname, username=username, password=password)
+stdin, stdout, stderr = ssh_client.exec_command('dir')
 
 #Get the output
 print(stdout.readlines())
