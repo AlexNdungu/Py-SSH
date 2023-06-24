@@ -19,4 +19,5 @@ stdin, stdout, stderr = ssh_client.exec_command('dir')
 #Get the output
 print(stdout.readlines())
 
+#Close Connection
 ssh_client.close()
