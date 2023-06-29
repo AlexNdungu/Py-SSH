@@ -14,10 +14,24 @@ password = getpass.getpass(prompt = 'Enter the password')
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 ssh_client.connect(hostname=hostname, port=port,username=username, password=password)
-stdin, stdout, stderr = ssh_client.exec_command('dir \n cd')
 
-#Get the output
-print(stdout.readlines())
+commands = [
+    'dir /ad /b',
+    'cd'
+]
+
+out_list = []
+
+for comm in commands:
+
+    stdin, stdout, stderr = ssh_client.exec_command(comm)
+
+    #Get the output
+    #print(stdout.readlines())
+    out_list.append(stdout.readlines())
+
+
+print(out_list)
 
 #Close Connection
 ssh_client.close()
