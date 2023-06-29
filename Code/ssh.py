@@ -14,7 +14,7 @@ password = getpass.getpass(prompt = 'Enter the password')
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 ssh_client.connect(hostname=hostname, port=port,username=username, password=password)
-stdin, stdout, stderr = ssh_client.exec_command('dir')
+stdin, stdout, stderr = ssh_client.exec_command('dir \n cd')
 
 #Get the output
 print(stdout.readlines())
